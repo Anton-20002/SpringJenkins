@@ -1,0 +1,29 @@
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.7.3'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+
+apply from: "./build-scripts/project-test.gradle"
+apply from: "./build-scripts/project-dependencies.gradle"
+
+
+
+group = 'com.jenkins'
+version = '1.0-SNAPSHOT'
+
+application {
+    mainClassName = 'logic.Application'
+}
+
+java {
+    manifest {
+        attributes 'Main-Class': 'logic.Application'
+    }
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}

@@ -1,0 +1,15 @@
+repositories {
+    mavenCentral()
+}
+
+ext {
+    lombokVersion = '1.18.20'
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:31.1-jre'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}

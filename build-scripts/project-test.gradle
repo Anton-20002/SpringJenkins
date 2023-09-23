@@ -1,0 +1,36 @@
+
+test {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: " + descriptor)
+    }
+    afterTest { descriptor, result ->
+        logger.lifecycle("Complete test: " + descriptor)
+        logger.lifecycle("Result: " + result.resultType.name())
+    }
+    testLogging {
+        exceptionFormat 'full'
+        events 'started', 'skipped', 'failed'
+        // show standard out and standard error of the test JVM(s) on the console
+        showStandardStreams = true
+    }
+
+    exclude 'logic/Application'
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.5.0'
+
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
